@@ -1,0 +1,35 @@
+{
+  "compilerOptions": {
+    // ? Language and runtime
+    "target": "es2022",
+    "lib": ["ES2022"],
+
+    // ? Node ESM
+    "module": "es2022",
+    "moduleResolution": "bundler",
+
+    // ? Project structure
+    "rootDir": "src",
+    "outDir": "dist",
+
+    // ? Type safety
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "exactOptionalPropertyTypes": true,
+
+    // ? Interlop and correctness
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+
+    // ? Build output
+    "sourceMap": true,
+
+    // ? Performance
+    "skipLibCheck": true,
+
+    // ? Environment types
+    "types": ["node"]
+  },
+
+  "include": ["src"]
+}
