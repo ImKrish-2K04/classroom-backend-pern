@@ -4,6 +4,7 @@ dotenv.config();
 
 const EnvSchema = z.object({
   PORT: z.coerce.number().int().positive(),
+  DATABASE_URL: z.url(),
 });
 
 let config = EnvSchema.safeParse(process.env);
