@@ -8,9 +8,13 @@ const getAllSubjects = async (
   res: Response,
   _next: NextFunction,
 ) => {
+  const MAX_LIMIT = 100;
   const { search, department, page = 1, limit = 10 } = req.query;
   const currentPage = Math.max(1, parseInt(page as string) || 1);
-  const limitPerPage = Math.max(1, parseInt(limit as string) || 10);
+  const limitPerPage = Math.min(
+    MAX_LIMIT,
+    Math.max(1, parseInt(limit as string) || 10),
+  );
   const offset = (currentPage - 1) * limitPerPage;
 
   const filterConditions = [];
@@ -32,13 +36,13 @@ const getAllSubjects = async (
     filterConditions.length > 0 ? and(...filterConditions) : undefined;
 
   const [countResult, subjectsList] = await Promise.all([
-    await db
+    db
       .select({ count: sql<number>`count(*)` })
       .from(subjects)
       .leftJoin(departments, eq(subjects.deptId, departments.id))
       .where(whereClause),
 
-    await db
+    db
       .select({
         ...getTableColumns(subjects),
         department: { ...getTableColumns(departments) },

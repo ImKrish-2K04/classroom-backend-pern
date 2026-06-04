@@ -26,13 +26,16 @@ app.get("/", async (req: Request, res: Response) => {
 });
 
 app.use((err: AppError, req: Request, res: Response, next: NextFunction) => {
-  err.statusCode = err.statusCode || 500;
-  err.status = err.status || "error";
+  const isAppError = err instanceof AppError;
+  const statusCode = isAppError ? err.statusCode : 500;
+  const status = isAppError ? err.status : "error";
+  const message = isAppError ? err.message : "Something went wrong";
+  const isOperational = isAppError ? err.isOperational : false;
 
-  if (err.isOperational) {
-    return res.status(err.statusCode).json({
-      status: err.status,
-      message: err.message,
+  if (isOperational) {
+    return res.status(statusCode).json({
+      status,
+      message,
     });
   }
 
