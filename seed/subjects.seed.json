@@ -1,0 +1,399 @@
+[
+  {
+    "_readme": "SEED INSTRUCTIONS — delete this entire object before running the seed!",
+    "step1": "Seed the departments first using departments.seed.json into your departments table.",
+    "step2": "Once departments are seeded, replace dept_code values in this file with the actual dept_id UUIDs from your DB.",
+    "step3": "Seed this file into your subjects table and you're done!",
+    "how_to_get_dept_ids": {
+      "lazy_but_smart_way": "After seeding departments, export the table as .json from NeonDB (click the 3-dots in the top-right of the table preview header). Then hand that exported .json + this file to Claude/any AI and ask it to generate an updated SQL INSERT query with the correct dept_id values mapped. Run that query in NeonDB's SQL Editor. Done. 100% works — verified! 🚀",
+      "programmatic_way": "Write a seed script that first fetches all departments, builds a dept_code → dept_id map, then inserts each subject by resolving dept_id from dept_code at runtime.",
+      "manual_way": "Replace each dept_code value with the actual UUID from your departments table one by one. Painful but valid. Your choice! 😏"
+    },
+    "note": "dept_code is used as a placeholder here instead of dept_id since UUIDs are environment-specific and will differ across local, staging, and production databases."
+  },
+  {
+    "code": "CS101",
+    "name": "Introduction to Programming",
+    "description": "Basics of programming using C and Python.",
+    "dept_code": "CS"
+  },
+  {
+    "code": "CS201",
+    "name": "Data Structures & Algorithms",
+    "description": "Arrays, linked lists, trees, graphs, and algorithm design.",
+    "dept_code": "CS"
+  },
+  {
+    "code": "CS301",
+    "name": "Database Management Systems",
+    "description": "Relational databases, SQL, normalization, and transactions.",
+    "dept_code": "CS"
+  },
+  {
+    "code": "CS401",
+    "name": "Machine Learning",
+    "description": "Supervised and unsupervised learning, neural networks, and model evaluation.",
+    "dept_code": "CS"
+  },
+
+  {
+    "code": "MATH101",
+    "name": "Calculus I",
+    "description": "Limits, derivatives, and integration with applications.",
+    "dept_code": "MATH"
+  },
+  {
+    "code": "MATH201",
+    "name": "Linear Algebra",
+    "description": "Vectors, matrices, eigenvalues, and linear transformations.",
+    "dept_code": "MATH"
+  },
+  {
+    "code": "MATH301",
+    "name": "Discrete Mathematics",
+    "description": "Logic, sets, graph theory, combinatorics, and number theory.",
+    "dept_code": "MATH"
+  },
+
+  {
+    "code": "PHY101",
+    "name": "Engineering Physics",
+    "description": "Mechanics, waves, optics, and modern physics fundamentals.",
+    "dept_code": "PHY"
+  },
+  {
+    "code": "PHY201",
+    "name": "Quantum Mechanics",
+    "description": "Wave-particle duality, Schrodinger equation, and quantum states.",
+    "dept_code": "PHY"
+  },
+  {
+    "code": "PHY301",
+    "name": "Thermodynamics",
+    "description": "Laws of thermodynamics, heat engines, entropy, and statistical mechanics.",
+    "dept_code": "PHY"
+  },
+
+  {
+    "code": "CHEM101",
+    "name": "General Chemistry",
+    "description": "Atomic structure, periodic table, chemical bonding, and reactions.",
+    "dept_code": "CHEM"
+  },
+  {
+    "code": "CHEM201",
+    "name": "Organic Chemistry",
+    "description": "Hydrocarbons, functional groups, reaction mechanisms, and synthesis.",
+    "dept_code": "CHEM"
+  },
+  {
+    "code": "CHEM301",
+    "name": "Physical Chemistry",
+    "description": "Chemical thermodynamics, kinetics, electrochemistry, and spectroscopy.",
+    "dept_code": "CHEM"
+  },
+
+  {
+    "code": "BIO101",
+    "name": "Cell Biology",
+    "description": "Cell structure, organelles, cell division, and cellular processes.",
+    "dept_code": "BIO"
+  },
+  {
+    "code": "BIO201",
+    "name": "Genetics",
+    "description": "Mendelian genetics, DNA structure, gene expression, and heredity.",
+    "dept_code": "BIO"
+  },
+  {
+    "code": "BIO301",
+    "name": "Human Anatomy & Physiology",
+    "description": "Structure and function of human body systems and organs.",
+    "dept_code": "BIO"
+  },
+
+  {
+    "code": "ENG101",
+    "name": "Technical Writing",
+    "description": "Writing reports, documentation, and professional communication.",
+    "dept_code": "ENG"
+  },
+  {
+    "code": "ENG201",
+    "name": "Communication Skills",
+    "description": "Verbal and written communication, presentations, and group discussions.",
+    "dept_code": "ENG"
+  },
+  {
+    "code": "ENG301",
+    "name": "English Literature",
+    "description": "Study of literary works, genres, themes, and critical analysis.",
+    "dept_code": "ENG"
+  },
+
+  {
+    "code": "HIST101",
+    "name": "World History",
+    "description": "Major civilizations, empires, and world events from ancient to modern times.",
+    "dept_code": "HIST"
+  },
+  {
+    "code": "HIST201",
+    "name": "Modern History",
+    "description": "Industrial revolution, world wars, decolonization, and the Cold War era.",
+    "dept_code": "HIST"
+  },
+  {
+    "code": "HIST301",
+    "name": "Indian History",
+    "description": "Ancient, medieval, and modern Indian history including the independence movement.",
+    "dept_code": "HIST"
+  },
+
+  {
+    "code": "GEO101",
+    "name": "Physical Geography",
+    "description": "Landforms, climate zones, rivers, soils, and natural ecosystems.",
+    "dept_code": "GEO"
+  },
+  {
+    "code": "GEO201",
+    "name": "Human Geography",
+    "description": "Population, urbanization, migration, culture, and economic geography.",
+    "dept_code": "GEO"
+  },
+  {
+    "code": "GEO301",
+    "name": "Cartography & GIS",
+    "description": "Map-making, spatial analysis, remote sensing, and geographic information systems.",
+    "dept_code": "GEO"
+  },
+
+  {
+    "code": "ECO101",
+    "name": "Microeconomics",
+    "description": "Supply and demand, market structures, consumer behavior, and pricing theory.",
+    "dept_code": "ECO"
+  },
+  {
+    "code": "ECO201",
+    "name": "Macroeconomics",
+    "description": "National income, inflation, fiscal policy, monetary policy, and economic growth.",
+    "dept_code": "ECO"
+  },
+  {
+    "code": "ECO301",
+    "name": "International Economics",
+    "description": "Trade theories, balance of payments, exchange rates, and global trade policy.",
+    "dept_code": "ECO"
+  },
+
+  {
+    "code": "BA101",
+    "name": "Principles of Management",
+    "description": "Planning, organizing, leading, and controlling in organizations.",
+    "dept_code": "BA"
+  },
+  {
+    "code": "BA201",
+    "name": "Marketing Management",
+    "description": "Market research, consumer behavior, branding, and marketing strategies.",
+    "dept_code": "BA"
+  },
+  {
+    "code": "BA301",
+    "name": "Financial Management",
+    "description": "Capital budgeting, financial analysis, risk management, and investment decisions.",
+    "dept_code": "BA"
+  },
+
+  {
+    "code": "ENGG101",
+    "name": "Engineering Mathematics",
+    "description": "Differential equations, Fourier series, Laplace transforms, and numerical methods.",
+    "dept_code": "ENGG"
+  },
+  {
+    "code": "ENGG201",
+    "name": "Engineering Mechanics",
+    "description": "Statics, dynamics, stress, strain, and material behavior under loads.",
+    "dept_code": "ENGG"
+  },
+  {
+    "code": "ENGG301",
+    "name": "Engineering Drawing & Design",
+    "description": "Technical drawing, CAD, geometric tolerancing, and design principles.",
+    "dept_code": "ENGG"
+  },
+
+  {
+    "code": "PSY101",
+    "name": "Introduction to Psychology",
+    "description": "Overview of psychology, behavior, perception, and mental processes.",
+    "dept_code": "PSY"
+  },
+  {
+    "code": "PSY201",
+    "name": "Cognitive Psychology",
+    "description": "Memory, attention, problem-solving, language, and decision making.",
+    "dept_code": "PSY"
+  },
+  {
+    "code": "PSY301",
+    "name": "Abnormal Psychology",
+    "description": "Mental disorders, their causes, diagnosis, and treatment approaches.",
+    "dept_code": "PSY"
+  },
+
+  {
+    "code": "SOC101",
+    "name": "Introduction to Sociology",
+    "description": "Social institutions, culture, socialization, and group dynamics.",
+    "dept_code": "SOC"
+  },
+  {
+    "code": "SOC201",
+    "name": "Social Research Methods",
+    "description": "Qualitative and quantitative research, surveys, interviews, and data analysis.",
+    "dept_code": "SOC"
+  },
+  {
+    "code": "SOC301",
+    "name": "Urban Sociology",
+    "description": "Urbanization, city structures, social inequality, and community development.",
+    "dept_code": "SOC"
+  },
+
+  {
+    "code": "POL101",
+    "name": "Introduction to Political Science",
+    "description": "Political systems, ideologies, governance structures, and state theory.",
+    "dept_code": "POL"
+  },
+  {
+    "code": "POL201",
+    "name": "International Relations",
+    "description": "Global politics, diplomacy, international organizations, and foreign policy.",
+    "dept_code": "POL"
+  },
+  {
+    "code": "POL301",
+    "name": "Public Administration",
+    "description": "Government administration, policy implementation, and bureaucratic systems.",
+    "dept_code": "POL"
+  },
+
+  {
+    "code": "PHIL101",
+    "name": "Introduction to Philosophy",
+    "description": "Core philosophical questions on existence, knowledge, ethics, and reality.",
+    "dept_code": "PHIL"
+  },
+  {
+    "code": "PHIL201",
+    "name": "Ethics & Moral Philosophy",
+    "description": "Ethical theories, moral reasoning, applied ethics, and dilemmas.",
+    "dept_code": "PHIL"
+  },
+  {
+    "code": "PHIL301",
+    "name": "Logic & Critical Thinking",
+    "description": "Formal logic, argumentation, fallacies, and structured reasoning.",
+    "dept_code": "PHIL"
+  },
+
+  {
+    "code": "EDU101",
+    "name": "Foundations of Education",
+    "description": "History, philosophy, and social context of education systems.",
+    "dept_code": "EDU"
+  },
+  {
+    "code": "EDU201",
+    "name": "Curriculum & Instruction",
+    "description": "Curriculum design, lesson planning, instructional strategies, and assessment.",
+    "dept_code": "EDU"
+  },
+  {
+    "code": "EDU301",
+    "name": "Educational Psychology",
+    "description": "Learning theories, motivation, cognitive development, and classroom behavior.",
+    "dept_code": "EDU"
+  },
+
+  {
+    "code": "FA101",
+    "name": "Drawing & Sketching",
+    "description": "Fundamentals of drawing, proportion, perspective, and shading techniques.",
+    "dept_code": "FA"
+  },
+  {
+    "code": "FA201",
+    "name": "Painting Techniques",
+    "description": "Watercolor, acrylic, and oil painting methods, color theory, and composition.",
+    "dept_code": "FA"
+  },
+  {
+    "code": "FA301",
+    "name": "Art History",
+    "description": "Survey of Western and Eastern art movements from ancient to contemporary times.",
+    "dept_code": "FA"
+  },
+
+  {
+    "code": "MUS101",
+    "name": "Music Theory",
+    "description": "Scales, chords, rhythm, notation, and harmonic structure.",
+    "dept_code": "MUS"
+  },
+  {
+    "code": "MUS201",
+    "name": "Music History",
+    "description": "Evolution of music from classical to contemporary genres and composers.",
+    "dept_code": "MUS"
+  },
+  {
+    "code": "MUS301",
+    "name": "Vocal & Instrumental Performance",
+    "description": "Performance techniques, stage presence, practice methods, and repertoire.",
+    "dept_code": "MUS"
+  },
+
+  {
+    "code": "PE101",
+    "name": "Fundamentals of Physical Fitness",
+    "description": "Exercise science, fitness components, training principles, and wellness habits.",
+    "dept_code": "PE"
+  },
+  {
+    "code": "PE201",
+    "name": "Sports Science",
+    "description": "Biomechanics, sports nutrition, injury prevention, and athletic performance.",
+    "dept_code": "PE"
+  },
+  {
+    "code": "PE301",
+    "name": "Health Education",
+    "description": "Personal health, disease prevention, mental wellness, and community health.",
+    "dept_code": "PE"
+  },
+
+  {
+    "code": "LAW101",
+    "name": "Introduction to Law",
+    "description": "Legal systems, sources of law, courts, and fundamental legal concepts.",
+    "dept_code": "LAW"
+  },
+  {
+    "code": "LAW201",
+    "name": "Constitutional Law",
+    "description": "Constitutional principles, fundamental rights, and judicial review.",
+    "dept_code": "LAW"
+  },
+  {
+    "code": "LAW301",
+    "name": "Criminal Law",
+    "description": "Elements of crime, offenses, defenses, and criminal justice procedures.",
+    "dept_code": "LAW"
+  }
+]
