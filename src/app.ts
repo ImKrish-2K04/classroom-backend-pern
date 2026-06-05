@@ -1,5 +1,6 @@
 import express, { Request, Response, NextFunction } from "express";
 import subjectsRouter from "./routes/subjects.routes";
+import departmentsRouter from "./routes/departments.routes";
 import AppError from "./lib/appError";
 import cors from "cors";
 import { env } from "./configs/config";
@@ -17,6 +18,8 @@ app.use(
 app.use(express.json());
 
 app.use("/api/subjects", subjectsRouter);
+
+app.use("/api/departments", departmentsRouter);
 
 app.get("/", async (req: Request, res: Response) => {
   return res.status(200).json({

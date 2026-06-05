@@ -29,7 +29,7 @@ const getAllSubjects = async (
   }
 
   if (department) {
-    filterConditions.push(ilike(departments.name, `%${department}%`));
+    filterConditions.push(ilike(departments.code, `${department}`));
   }
 
   const whereClause =

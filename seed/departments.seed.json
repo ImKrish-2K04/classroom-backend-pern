@@ -1,0 +1,102 @@
+[
+  {
+    "code": "CS",
+    "name": "Computer Science",
+    "description": "Covers programming, algorithms, data structures, and software engineering principles."
+  },
+  {
+    "code": "MATH",
+    "name": "Mathematics",
+    "description": "Covers pure and applied mathematics including calculus, algebra, and statistics."
+  },
+  {
+    "code": "PHY",
+    "name": "Physics",
+    "description": "Covers classical mechanics, electromagnetism, quantum physics, and thermodynamics."
+  },
+  {
+    "code": "CHEM",
+    "name": "Chemistry",
+    "description": "Covers organic, inorganic, and physical chemistry including reactions, bonding, and laboratory techniques."
+  },
+  {
+    "code": "BIO",
+    "name": "Biology",
+    "description": "Covers cell biology, genetics, ecology, human anatomy, and life sciences."
+  },
+  {
+    "code": "ENG",
+    "name": "English",
+    "description": "Covers literature, technical writing, communication, and language skills."
+  },
+  {
+    "code": "HIST",
+    "name": "History",
+    "description": "Covers world history, civilizations, historical events, and historiographical methods."
+  },
+  {
+    "code": "GEO",
+    "name": "Geography",
+    "description": "Covers physical and human geography, cartography, climate, and geospatial analysis."
+  },
+  {
+    "code": "ECO",
+    "name": "Economics",
+    "description": "Covers microeconomics, macroeconomics, market theory, and economic policy."
+  },
+  {
+    "code": "BA",
+    "name": "Business Administration",
+    "description": "Covers management, marketing, finance, entrepreneurship, and organizational behavior."
+  },
+  {
+    "code": "ENGG",
+    "name": "Engineering",
+    "description": "Covers core engineering principles including mechanics, thermodynamics, and design."
+  },
+  {
+    "code": "PSY",
+    "name": "Psychology",
+    "description": "Covers human behavior, cognitive processes, mental health, and psychological research methods."
+  },
+  {
+    "code": "SOC",
+    "name": "Sociology",
+    "description": "Covers social structures, culture, institutions, and human society dynamics."
+  },
+  {
+    "code": "POL",
+    "name": "Political Science",
+    "description": "Covers political theory, governance, international relations, and public policy."
+  },
+  {
+    "code": "PHIL",
+    "name": "Philosophy",
+    "description": "Covers logic, ethics, metaphysics, epistemology, and philosophical inquiry."
+  },
+  {
+    "code": "EDU",
+    "name": "Education",
+    "description": "Covers pedagogy, curriculum design, educational psychology, and teaching methodologies."
+  },
+  {
+    "code": "FA",
+    "name": "Fine Arts",
+    "description": "Covers visual arts, drawing, painting, sculpture, and art history."
+  },
+  {
+    "code": "MUS",
+    "name": "Music",
+    "description": "Covers music theory, composition, performance, and the history of musical traditions."
+  },
+  {
+    "code": "PE",
+    "name": "Physical Education",
+    "description": "Covers fitness, sports science, health education, and physical wellness."
+  },
+  {
+    "code": "LAW",
+    "name": "Law",
+    "description": "Covers legal theory, constitutional law, criminal law, and judicial processes."
+  }
+]
