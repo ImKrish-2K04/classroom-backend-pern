@@ -9,7 +9,8 @@ const getAllSubjects = async (
   _next: NextFunction,
 ) => {
   const MAX_LIMIT = 100;
-  const { search, department, page = 1, limit = 10 } = req.query;
+  const { search, department, page = 1, limit } = req.query;
+  const noPagination = !limit;
   const currentPage = Math.max(1, parseInt(page as string) || 1);
   const limitPerPage = Math.min(
     MAX_LIMIT,
@@ -35,6 +36,25 @@ const getAllSubjects = async (
   const whereClause =
     filterConditions.length > 0 ? and(...filterConditions) : undefined;
 
+  const subjectsQuery = db
+    .select({
+      ...getTableColumns(subjects),
+      department: { ...getTableColumns(departments) },
+    })
+    .from(subjects)
+    .leftJoin(departments, eq(subjects.deptId, departments.id))
+    .where(whereClause)
+    .orderBy(desc(subjects.createdAt));
+
+  if (noPagination) {
+    const subjectsList = await subjectsQuery;
+
+    return res.status(200).json({
+      data: subjectsList,
+      pagination: null,
+    });
+  }
+
   const [countResult, subjectsList] = await Promise.all([
     db
       .select({ count: sql<number>`count(*)` })
@@ -42,17 +62,7 @@ const getAllSubjects = async (
       .leftJoin(departments, eq(subjects.deptId, departments.id))
       .where(whereClause),
 
-    db
-      .select({
-        ...getTableColumns(subjects),
-        department: { ...getTableColumns(departments) },
-      })
-      .from(subjects)
-      .leftJoin(departments, eq(subjects.deptId, departments.id))
-      .where(whereClause)
-      .orderBy(desc(subjects.createdAt))
-      .limit(limitPerPage)
-      .offset(offset),
+    subjectsQuery.limit(limitPerPage).offset(offset),
   ]);
 
   const totalCount = Number(countResult[0]?.count ?? 0);
