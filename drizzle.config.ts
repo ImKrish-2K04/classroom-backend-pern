@@ -7,7 +7,7 @@ if (!DATABASE_URL.success)
   throw new Error("DATABASE_URL is missing or invalid");
 
 export default {
-  schema: "./src/db/schema/app.ts",
+  schema: "./src/db/schema/",
   out: "./drizzle",
   dialect: "postgresql",
   dbCredentials: {

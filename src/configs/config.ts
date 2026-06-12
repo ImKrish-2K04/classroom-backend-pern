@@ -4,7 +4,7 @@ dotenv.config();
 
 const EnvSchema = z.object({
   PORT: z.coerce.number().int().positive(),
-  DATABASE_URL: z.url(),
+  DATABASE_URL: z.string().min(1, { error: "Please provide database string" }),
   FRONTEND_URL: z.url(),
 });
 
