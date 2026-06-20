@@ -4,6 +4,7 @@ import departmentsRouter from "./routes/departments.routes";
 import AppError from "./lib/appError";
 import cors from "cors";
 import { env } from "./configs/config";
+import { securityMiddleware } from "./middlewares/security";
 
 const app = express();
 
@@ -16,6 +17,8 @@ app.use(
 );
 
 app.use(express.json());
+
+app.use(securityMiddleware);
 
 app.use("/api/subjects", subjectsRouter);
 
