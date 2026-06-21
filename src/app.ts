@@ -5,6 +5,8 @@ import AppError from "./lib/appError";
 import cors from "cors";
 import { env } from "./configs/config";
 import { securityMiddleware } from "./middlewares/security";
+import { toNodeHandler } from "better-auth/node";
+import { auth } from "./lib/auth";
 
 const app = express();
 
@@ -15,6 +17,8 @@ app.use(
     credentials: true,
   }),
 );
+
+app.all("/api/auth/*splat", toNodeHandler(auth));
 
 app.use(express.json());
 
