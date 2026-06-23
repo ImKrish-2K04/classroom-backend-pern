@@ -144,3 +144,5 @@ vite.config.ts.timestamp-*
 
 # collections and dirs
 src/http-client-collection
+apminsightnode.json
+apminsightdata/
