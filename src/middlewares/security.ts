@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from "express";
-import { aj } from "../configs/arcjet";
+import { aj } from "../configs/arcjet.js";
 import { ArcjetNodeRequest, slidingWindow } from "@arcjet/node";
 
 // Pre-configured Arcjet clients for different rate-limit roles

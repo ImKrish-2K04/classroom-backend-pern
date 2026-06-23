@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from "express";
-import { db } from "../db";
-import { departments } from "../db/schema";
+import { db } from "../db/index.js";
+import { departments } from "../db/schema/index.js";
 
 const getAllDepartments = async (
   req: Request,

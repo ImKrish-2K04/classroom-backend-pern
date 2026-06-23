@@ -1,5 +1,5 @@
-import { env } from "./configs/config";
-import app from "./app";
+import { env } from "./configs/config.js";
+import app from "./app.js";
 import http from "http";
 
 const PORT = env.PORT || 8000;
