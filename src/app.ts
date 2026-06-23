@@ -1,3 +1,6 @@
+import AgentAPI from "apminsight";
+AgentAPI.config();
+
 import express, { Request, Response, NextFunction } from "express";
 import subjectsRouter from "./routes/subjects.routes";
 import departmentsRouter from "./routes/departments.routes";

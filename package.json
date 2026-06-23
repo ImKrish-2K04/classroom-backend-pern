@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "tsx --watch src/index.ts",
+    "test:db": "tsx scripts/testDbConnection.ts",
     "start": "tsx src/index.ts",
     "build": "tsc",
     "db:generate": "drizzle-kit generate",
@@ -20,6 +21,7 @@
     "@arcjet/inspect": "^1.5.0",
     "@arcjet/ip": "^1.5.0",
     "@arcjet/node": "^1.5.0",
+    "apminsight": "^5.4.0",
     "better-auth": "^1.6.20",
     "cors": "^2.8.6",
     "dotenv": "^17.4.2",
