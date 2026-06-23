@@ -2,14 +2,14 @@ import AgentAPI from "apminsight";
 AgentAPI.config();
 
 import express, { Request, Response, NextFunction } from "express";
-import subjectsRouter from "./routes/subjects.routes";
-import departmentsRouter from "./routes/departments.routes";
-import AppError from "./lib/appError";
+import subjectsRouter from "./routes/subjects.routes.js";
+import departmentsRouter from "./routes/departments.routes.js";
+import AppError from "./lib/appError.js";
 import cors from "cors";
-import { env } from "./configs/config";
-import { securityMiddleware } from "./middlewares/security";
+import { env } from "./configs/config.js";
+import { securityMiddleware } from "./middlewares/security.js";
 import { toNodeHandler } from "better-auth/node";
-import { auth } from "./lib/auth";
+import { auth } from "./lib/auth.js";
 
 const app = express();
 
