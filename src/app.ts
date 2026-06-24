@@ -4,6 +4,8 @@ AgentAPI.config();
 import express, { Request, Response, NextFunction } from "express";
 import subjectsRouter from "./routes/subjects.routes.js";
 import departmentsRouter from "./routes/departments.routes.js";
+import usersRouter from "./routes/users.routes.js";
+import classesRouter from "./routes/classes.routes.js";
 import AppError from "./lib/appError.js";
 import cors from "cors";
 import { env } from "./configs/config.js";
@@ -30,6 +32,10 @@ app.use(securityMiddleware);
 app.use("/api/subjects", subjectsRouter);
 
 app.use("/api/departments", departmentsRouter);
+
+app.use("/api/users", usersRouter);
+
+app.use("/api/classes", classesRouter);
 
 app.get("/", async (req: Request, res: Response) => {
   return res.status(200).json({
