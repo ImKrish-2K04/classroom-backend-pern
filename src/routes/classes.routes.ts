@@ -1,6 +1,6 @@
 import { Router } from "express";
-import catchAsync from "../lib/catchAsync";
-import { createClass } from "../controllers/classes.controller";
+import catchAsync from "../lib/catchAsync.js";
+import { createClass } from "../controllers/classes.controller.js";
 
 const router = Router();
 

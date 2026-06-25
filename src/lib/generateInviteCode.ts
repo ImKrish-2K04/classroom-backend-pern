@@ -2,7 +2,7 @@ import { randomBytes } from "crypto";
 import { db } from "../db/index.js";
 import { classes } from "../db/schema/index.js";
 import { eq } from "drizzle-orm";
-import AppError from "./appError";
+import AppError from "./appError.js";
 
 const generateInviteCode = () => randomBytes(5).toString("base64url");
 
