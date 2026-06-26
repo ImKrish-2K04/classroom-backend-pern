@@ -1,6 +1,6 @@
-import { eq } from "drizzle-orm";
+import { and, desc, eq, getTableColumns, ilike, sql } from "drizzle-orm";
 import { Request, Response, NextFunction } from "express";
-import { z } from "zod";
+import { date, e164, z } from "zod";
 
 import { db } from "../db/index.js";
 import {
@@ -97,4 +97,87 @@ const createClass = async (req: Request, res: Response, next: NextFunction) => {
   });
 };
 
-export { createClass };
+const getAllClasses = async (
+  req: Request,
+  res: Response,
+  _next: NextFunction,
+) => {
+  const MAX_LIMIT = 100;
+  const { search, teacherId, subjectId } = req.query as Record<
+    string,
+    string | undefined
+  >;
+  const page = (req.query.page as string | undefined) ?? "1";
+  const limit = (req.query.limit as string | undefined) ?? "10";
+  const noPagination = !limit;
+  const currentPage = Math.max(1, parseInt(page) || 1);
+  const limitPerPage = Math.min(MAX_LIMIT, Math.max(1, parseInt(limit) || 10));
+  const offset = (currentPage - 1) * limitPerPage;
+
+  const filterConditions = [];
+
+  if (search) {
+    filterConditions.push(ilike(classes.name, `%${search}%`));
+  }
+
+  if (teacherId) {
+    filterConditions.push(eq(user.id, teacherId));
+  }
+
+  if (subjectId) {
+    filterConditions.push(eq(subjects.id, subjectId));
+  }
+
+  const whereClause =
+    filterConditions.length > 0 ? and(...filterConditions) : undefined;
+
+  const classesQuery = db
+    .select({
+      ...getTableColumns(classes),
+      subject: {
+        ...getTableColumns(subjects),
+      },
+      teacher: {
+        ...getTableColumns(user),
+      },
+    })
+    .from(classes)
+    .leftJoin(subjects, eq(classes.subjectId, subjects.id))
+    .leftJoin(user, eq(classes.teacherId, user.id))
+    .where(whereClause)
+    .orderBy(desc(classes.createdAt));
+
+  if (!noPagination) {
+    const classesList = await classesQuery;
+
+    return res.status(200).json({
+      data: classesList,
+      pagination: null,
+    });
+  }
+
+  const [countResult, classesList] = await Promise.all([
+    db
+      .select({ count: sql<number>`count(*)` })
+      .from(classes)
+      .leftJoin(subjects, eq(classes.subjectId, subjects.id))
+      .leftJoin(user, eq(classes.teacherId, user.id))
+      .where(whereClause),
+
+    classesQuery.limit(limitPerPage).offset(offset),
+  ]);
+
+  const totalCount = Number(countResult[0]?.count ?? 0);
+
+  res.status(200).json({
+    data: classesList,
+    pagination: {
+      page: currentPage,
+      limit: limitPerPage,
+      total: totalCount,
+      totalPages: Math.ceil(totalCount / limitPerPage),
+    },
+  });
+};
+
+export { createClass, getAllClasses };
